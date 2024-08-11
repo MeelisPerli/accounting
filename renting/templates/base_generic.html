@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Site</title>
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          display: flex;
+        }
+        .sidebar {
+          width: 200px;
+          height: 100vh;
+          background-color: #f8f9fa;
+          padding: 10px;
+        }
+        .sidebar a {
+          display: block;
+          margin: 10px 0;
+          text-decoration: none;
+        }
+        header {
+          width: 100%;
+          background-color: #f8f9fa;
+          padding: 10px;
+          text-align: center;
+        }
+        main {
+          width: calc(100% - 200px);
+          padding: 10px;
+        }
+        .neutral-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .neutral-table th, .neutral-table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+      }
+
+      .neutral-table tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+
+      .neutral-table th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #4CAF50;
+        color: white;
+      }
+
+      .filter-form {
+        margin-bottom: 20px;
+      }
+
+      .filter-form label, .filter-form input {
+        margin: 5px;
+      }
+
+      .filter-form input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        text-decoration: none;
+        margin: 4px 2px;
+        cursor: pointer;
+      }
+
+    .sidebar a {
+        display: block;
+        margin: 0; /* Remove the margin */
+        text-decoration: none;
+        color: #333;
+        background-color: #f8f9fa;
+        padding: 10px;
+        border-top: 1px solid #ddd; /* Add a border on the top */
+        border-bottom: 1px solid #ddd; /* Add a border on the bottom */
+        transition: background-color 0.3s ease;
+  }
+
+  .sidebar a:not(:last-child) {
+    border-bottom: none; /* Remove the bottom border for all but the last button */
+  }
+
+  .sidebar a:hover {
+    background-color: #e2e6ea;
+  }
+  .page-change-button {
+    display: inline-block; /* Change this line */
+    margin: 0; /* Remove the margin */
+    text-decoration: none;
+    color: #333;
+    background-color: #f8f9fa;
+    padding: 10px;
+    border: 1px solid #ddd; /* Add a border on all sides */
+    border-right: 1px solid #ddd; /* Add a right border to all buttons */
+    transition: background-color 0.3s ease;
+  }
+
+  .page-change-button:last-child {
+    border-right: 1px solid #ddd; /* Add a right border to the last button */
+  }
+
+  .page-change-button:hover {
+    background-color: #e2e6ea;
+  }
+
+    tr.yellow.odd {
+        background-color: #FFFF99; /* Light Yellow */
+    }
+
+    tr.green.odd {
+        background-color: #99FF99; /* Light Green */
+    }
+
+    tr.gray.odd {
+        background-color: #D3D3D3; /* Light Gray */
+    }
+
+    tr.yellow.even {
+        background-color: #FFFFCC; /* Very Light Yellow */
+    }
+
+    tr.green.even {
+        background-color: #CCFFCC; /* Very Light Green */
+    }
+
+    tr.gray.even {
+        background-color: #E5E5E5; /* Very Light Gray */
+    }
+    </style>
+</head>
+<body>
+
+<div class="sidebar">
+    <a href="{% url 'rental_overview' %}">Rentals</a>
+    <a href="{% url 'renter_overview' %}">Renters</a>
+    <a href="{% url 'rental_new' %}">Add Rental</a>
+    <a href="{% url 'bank_entry_csv_upload' %}">Billing</a>
+    <!-- Add more navigation links as needed -->
+</div>
+<main>
+    {% block header %}
+    {% endblock %}
+    {% block selection_bar %}
+    {% endblock %}
+    {% block content %}
+    {% endblock %}
+</main>
+</body>
+</html>

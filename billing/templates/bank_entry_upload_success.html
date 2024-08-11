@@ -1,0 +1,7 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Upload Success</h1>
+    <p>Out of {{ total_rows }}, {{ added_rows }} rows were added.</p>
+    <a class="page-change-button" href="{% url 'bank_entry_viewer' %}">View Data</a>
+{% endblock %}

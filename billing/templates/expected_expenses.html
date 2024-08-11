@@ -1,0 +1,30 @@
+{% extends "billing_generic.html" %}
+
+{% block content %}
+<h2>Expected Expenses</h2>
+<a href="{% url 'add_expected_expense' %}">Add New Expected Expense</a>
+<table class="neutral-table">
+    <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Amount</th>
+        <th>Entry Reference ID</th>
+        <th>Rental ID</th>
+        <th>Billing Start</th>
+        <th>Billing End</th>
+        <th>Edit Button</th>
+    </tr>
+    {% for expense in expected_expenses %}
+    <tr class="{{ expense.contract_status_color }} {% cycle 'odd' 'even' %}">
+        <td>{{ expense.name }}</td>
+        <td>{{ expense.get_type_display }}</td>
+        <td>{{ expense.amount }}</td>
+        <td>{{ expense.referral_id }}</td>
+        <td>{{ expense.rental_id }}</td>
+        <td>{{ expense.billing_start_date }}</td>
+        <td>{{ expense.billing_end_date }}</td>
+        <td><a href="{% url 'edit_expected_expense' expense.expectedexpense_id %}">Edit</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+
+<h1>Renters</h1>
+
+<form method="GET">
+    <input type="text" name="name" placeholder="Search by name" value="{{ request.GET.name }}">
+    <input type="text" name="address" placeholder="Search by rental address" value="{{ request.GET.address }}">
+    <input type="text" name="room_nr" placeholder="Search by room nr" value="{{ request.GET.room_nr }}">
+    <input type="date" name="begin_date" placeholder="Search by begin date" value="{{ request.GET.begin_date }}">
+    <input type="date" name="end_date" placeholder="Search by end date" value="{{ request.GET.end_date }}">
+    <button type="submit">Search</button>
+</form>
+
+{% for renter in renters %}
+    <div class="renter">
+        <h2>{{ renter.renter_name }}</h2>
+        <p>Rental Address: {{ renter.rental.address }}, Room: {{ renter.rental.room_nr}} </p>
+        <p>Begin Date: {{ renter.begin_date }}</p>
+        <p>End Date: {{ renter.end_date }}</p>
+        <a href="{% url 'renter_detail' renter.renter_id %}">View Details</a>
+    </div>
+{% empty %}
+    <p>No renters found.</p>
+{% endfor %}
+
+{% endblock %}

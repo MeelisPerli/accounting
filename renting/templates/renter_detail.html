@@ -1,0 +1,50 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+
+<style>
+    h1 {
+        color: #333;
+        font-size: 2em;
+    }
+    p {
+        color: #666;
+        font-size: 1.2em;
+    }
+</style>
+
+<h1>Renter Details</h1>
+
+<div class="renter-details">
+  <p><strong>Renter ID:</strong> {{ renter.renter_id }}</p>
+  <p><strong>Name:</strong> {{ renter.renter_name }}</p>
+  <p><strong>Monthly Rent:</strong> {{ renter.monthly_rent }}</p>
+  <p><strong>Monthly Communals:</strong> {{ renter.monthly_communals }}</p>
+  <p><strong>Begin Date:</strong> {{ renter.begin_date }}</p>
+  <p><strong>End Date:</strong> {{ renter.end_date }}</p>
+  <a href="{% url 'renter_edit' renter.renter_id %}">Edit</a>
+</div>
+
+<h1>Rental Details</h1>
+
+<div class="rental-details">
+  <p><strong>Rental ID:</strong> {{ renter.rental.rental_id }}</p>
+  <p><strong>Address:</strong> {{ renter.rental.address }}</p>
+  <p><strong>Room Number:</strong> {{ renter.rental.room_nr }}</p>
+  <p><strong>Description:</strong> {{ renter.rental.description }}</p>
+</div>
+
+<h1>Deposit Details</h1>
+
+<div class="deposit-details">
+  <p><strong>Deposit ID:</strong> {{ renter.deposit.deposit_id }}</p>
+  <p><strong>Deposit Amount:</strong> {{ renter.deposit.deposit_amount }}</p>
+  <p><strong>Deposit Date:</strong> {{ renter.deposit.deposit_date }}</p>
+  <p><strong>Referral ID:</strong> {{ renter.deposit.referral_id }}</p>
+  <p><strong>Status:</strong> {{ renter.deposit.get_status_display }}</p>
+  <p><strong>Paid Back Date:</strong> {{ renter.deposit.paid_back_date }}</p>
+  <p><strong>Return Referral ID:</strong> {{ renter.deposit.return_referral_id }}</p>
+  <a href="{% url 'renter_deposit_edit' renter.renter_id %}">Edit</a>
+</div>
+
+{% endblock %}

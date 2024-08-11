@@ -1,0 +1,13 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h1>Edit Deposit</h1>
+  <p>Renter Name: {{ renter_name }}</p>
+  <p>Rental Address: {{ rental_address }}</p>
+  <p>Room Number: {{ room_number }}</p>
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+  </form>
+{% endblock %}

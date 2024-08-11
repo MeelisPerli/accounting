@@ -1,0 +1,28 @@
+{% extends 'billing_generic.html' %}
+
+{% block content %}
+  <h2>Create Revenue Report</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Create</button>
+  </form>
+
+  <h2>Revenue Reports</h2>
+  <table class="neutral-table">
+    <tr>
+      <th>Type</th>
+      <th>Amount</th>
+      <th>Date</th>
+      <th>Year</th>
+    </tr>
+    {% for report in revenue_reports %}
+    <tr>
+      <td>{{ report.type }}</td>
+      <td>{{ report.amount }}</td>
+      <td>{{ report.date }}</td>
+      <td>{{ report.billing_year }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

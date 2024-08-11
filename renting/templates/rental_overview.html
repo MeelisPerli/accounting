@@ -1,0 +1,30 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h2>Rental Overview</h2>
+  <style>
+    .rental {
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+  </style>
+  <div>
+    {% for rental in rentals %}
+      <div class="rental">
+        <h3><a href="{% url 'rental_detail' pk=rental.pk %}">{{ rental.address }}</a></h3>
+        <p>Room number: {{ rental.room_nr }}</p>
+
+        {% if rental.renter %}
+          <p>Rented by: <a href="{% url 'renter_detail' pk=rental.renter.pk %}"> {{ rental.renter.renter_name }} </a> </p>
+        {% else %}
+          <p>No renter</p>
+        {% endif %}
+
+        <h3><a href="{% url 'renter_deposit_new' pk=rental.pk %}"> Add Renter </a></h3>
+      </div>
+    {% empty %}
+      <p>No rentals available.</p>
+    {% endfor %}
+  </div>
+{% endblock %}

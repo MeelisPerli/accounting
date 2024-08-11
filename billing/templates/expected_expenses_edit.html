@@ -1,0 +1,10 @@
+get_object_or_404{% extends "billing_generic.html" %}
+
+{% block content %}
+<h2>Edit Expected Expense</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save changes</button>
+</form>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base_generic.html' %}
+
+{% block title %}Billing{% endblock %}
+
+{% block header %}
+  <h1>Billing</h1>
+{% endblock %}
+
+{% block selection_bar %}
+  <div class="selection-bar">
+    <a class="page-change-button" href="{% url 'bank_entry_csv_upload' %}">Data Ingestion</a>
+    <a class="page-change-button" href="{% url 'bank_entry_viewer' %}">Data Viewer</a>
+    <a class="page-change-button" href="{% url 'expected_expenses' %}">Expected Expenses</a>
+    <a class="page-change-button" href="{% url 'create_and_view_revenue_report' %}">Revenue Report</a>
+  </div>
+{% endblock %}
+
+{% block content %}
+{% endblock %}
